@@ -1,0 +1,4 @@
+package com.eurojet.russiantutor.data
+
+data class Lesson(val id:Int,val title:String,val level:String,val explanation:String)
+object Curriculum { val lessons=listOf(Lesson(1,"Cyrillic basics","A0","Learn the first Cyrillic letters."),Lesson(2,"Greetings","A0","Привет, здравствуйте, пока, спасибо."),Lesson(3,"Introduce yourself","A1","Меня зовут..."),Lesson(4,"Numbers","A1","Practice 1–10."),Lesson(5,"Food","A1","Simple requests and food vocabulary."),Lesson(6,"Present tense","A1","Basic present-tense patterns."),Lesson(7,"Past tense","A2","Past-tense agreement."),Lesson(8,"Conversation","A2","Build everyday dialogues.")) }
