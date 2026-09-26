@@ -11,7 +11,7 @@ static std::once_flag g_once; static std::mutex g_mutex; static llama_model* g_m
 static bool load_model(const std::string& path){
     std::call_once(g_once,[]{llama_backend_init();}); std::lock_guard<std::mutex> lock(g_mutex);
     if(g_model&&g_path==path)return true; if(g_model){llama_model_free(g_model);g_model=nullptr;g_path.clear();}
-    auto p=llama_model_default_params(); p.n_gpu_layers=0; p.use_mmap=true; g_model=llama_model_load_from_file(path.c_str(),p);
+    auto p=llama_model_default_params(); p.n_gpu_layers=0; g_model=llama_model_load_from_file(path.c_str(),p);
     if(!g_model){LOGE("Failed to load %s",path.c_str());return false;} g_path=path; return true;
 }
 static std::string format_prompt(llama_model* model,const std::string& user,const std::string& level){
