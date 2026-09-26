@@ -10,7 +10,7 @@ class LocalTutor(private val model:LocalModel,private val modelFileProvider:()->
     }
     override suspend fun generateLesson(topic:String,level:String):String {
         val file=modelFileProvider() ?: return "Download the selected local AI model first."
-        val prompt="Create a short Russian-learning lesson about "$topic" for level $level. Include 5 useful words with English meanings, one grammar point, a mini dialogue, 3 exercises, and one speaking prompt."
+        val prompt = "Create a short Russian-learning lesson about $topic for level $level. Include 5 useful words with English meanings, one grammar point, a mini dialogue, 3 exercises, and one speaking prompt."
         return NativeLlama.generate(model,file,prompt,level)
     }
 }
