@@ -1,0 +1,3 @@
+package com.eurojet.russiantutor.ai
+interface AiTutor { suspend fun chat(userMessage:String,level:String):String; suspend fun generateLesson(topic:String,level:String):String }
+class LocalTutor(private val model:LocalModel):AiTutor { override suspend fun chat(userMessage:String,level:String)= "Я понимаю: «"+userMessage+"».\n\nKeep replying in Russian. I will correct one important mistake and continue.\n\nModel: "+model.name; override suspend fun generateLesson(topic:String,level:String)= topic.replaceFirstChar{it.uppercase()}+" · "+level+"\n\n5 useful words\nA grammar idea\nMini dialogue\nPractice questions\nSpeaking challenge" }
